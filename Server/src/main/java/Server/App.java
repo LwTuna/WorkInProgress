@@ -3,12 +3,24 @@
  */
 package Server;
 
-public class App {
-    public String getGreeting() {
-        return "Hello world.";
-    }
+import java.net.InetSocketAddress;
 
+import Server.net.Server;
+
+public class App {
+    
+	private static final int port = 8888;
+
+	public App() {
+		Server server = new Server(new InetSocketAddress("localhost",port));
+		server.run();
+		
+	}
+	
+	
+	
+	
     public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+        new App();
     }
 }
