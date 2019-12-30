@@ -19,12 +19,9 @@ public abstract class Logger {
 		}
 	}
 	
-	public static void err(String...infos) {
-		for(String s : err) {
-			s = getFormated(s);
-			System.err.println(s);
-			err.add(s);
-		}
+	public static void err(Exception e) {
+		e.printStackTrace();
+		err.add(getFormated(e.getMessage()));
 	}
 	
 	

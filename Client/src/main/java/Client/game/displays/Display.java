@@ -1,25 +1,49 @@
 package Client.game.displays;
 
+import java.awt.Canvas;
+import java.awt.Dimension;
+
 import javax.swing.JFrame;
 
-import Client.Logger;
+public class Display{
 
-public class Display extends JFrame{
-
-	
+	private Canvas canvas;
+	private JFrame frame;
 	
 	public Display(String title,int width,int height,boolean fullscreen) {
-		super(title);
+		frame = new JFrame(title);
 		if(fullscreen) {
-			setExtendedState(MAXIMIZED_BOTH);
-			setUndecorated(true);
+			frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+			frame.setUndecorated(true);
 			
 		}else {
-			setSize(width, height);
+			frame.setSize(width, height);
 		}
-		setResizable(false);
-		setVisible(true);
+		frame.setPreferredSize(new Dimension(frame.getWidth(),frame.getHeight()));
+		frame.setResizable(false);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		canvas = new Canvas();
+		canvas.setSize(frame.getWidth(), frame.getHeight());
+		frame.add(canvas);
+		frame.pack();
+		
+		frame.setVisible(true);
 		
 	}
+	
+	public Canvas getCanvas() {
+		return canvas;
+	}
+	
+	
+	public int getWidth() {
+		return frame.getWidth();
+	}
+	
+	public int getHeight() {
+		return frame.getHeight();
+	}
+	
 	
 }
