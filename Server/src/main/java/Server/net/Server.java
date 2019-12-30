@@ -41,6 +41,7 @@ public class Server extends WebSocketServer{
 	@Override
 	public void onMessage(WebSocket conn, String message) {
 		Logger.info("Message Recieved : "+message);
+		
 	}
 
 	@Override

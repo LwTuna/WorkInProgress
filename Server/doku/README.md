@@ -6,3 +6,7 @@ Every Packet is in JSON Format and contains a key:String attribut which is an id
 
 - {key:"loginResponse", succes:boolean}
 
+## Next TODO
+
+- Handle Packets from Client    
+	- Login Packet
