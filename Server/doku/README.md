@@ -8,5 +8,5 @@ Every Packet is in JSON Format and contains a key:String attribut which is an id
 
 ## Next TODO
 
-- Handle Packets from Client    
-	- Login Packet
+
+	

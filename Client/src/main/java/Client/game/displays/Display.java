@@ -5,6 +5,9 @@ import java.awt.Dimension;
 
 import javax.swing.JFrame;
 
+import Client.game.displays.input.KeyManager;
+import Client.game.displays.input.MouseManager;
+
 public class Display{
 
 	private Canvas canvas;
@@ -43,6 +46,21 @@ public class Display{
 	
 	public int getHeight() {
 		return frame.getHeight();
+	}
+
+	public void addKeyManager(KeyManager keyManager) {
+		frame.addKeyListener(keyManager);
+		canvas.addKeyListener(keyManager);
+		
+	}
+
+	public void addMouseManager(MouseManager mouseManager) {
+		frame.addMouseListener(mouseManager);
+		frame.addMouseMotionListener(mouseManager);
+		
+		canvas.addMouseListener(mouseManager);
+		canvas.addMouseMotionListener(mouseManager);
+		
 	}
 	
 	

@@ -7,23 +7,19 @@ import org.java_websocket.handshake.ClientHandshake;
 import org.java_websocket.server.WebSocketServer;
 import org.json.JSONObject;
 
+import Server.App;
 import Server.Logger;
+import Server.game.Game;
 
 public class Server extends WebSocketServer{
 
+	private App app;
 	
-	public Server(InetSocketAddress address) {
+	public Server(InetSocketAddress address, App game) {
 		super(address);
-		
+		this.app = game;
 	}
 	
-	public void broadcast(JSONObject text) {
-		super.broadcast(text.toString());
-	}
-	
-	public void send(JSONObject object,WebSocket conn) {
-		conn.send(object.toString());
-	}
 	
 	@Override
 	public void onStart() {
@@ -40,7 +36,7 @@ public class Server extends WebSocketServer{
 	
 	@Override
 	public void onMessage(WebSocket conn, String message) {
-		Logger.info("Message Recieved : "+message);
+		app.getGame().handle(conn, message);
 		
 	}
 

@@ -5,14 +5,20 @@ package Server;
 
 import java.net.InetSocketAddress;
 
+import Server.game.Game;
 import Server.net.Server;
 
 public class App {
     
 	private static final int port = 8888;
+	
+	private Server server;
+	
+	private Game game;
 
 	public App() {
-		Server server = new Server(new InetSocketAddress("localhost",port));
+		game = new Game(this);
+		server = new Server(new InetSocketAddress("localhost",port),this);
 		server.run();
 		
 	}
@@ -20,7 +26,21 @@ public class App {
 	
 	
 	
-    public static void main(String[] args) {
+    public Server getServer() {
+		return server;
+	}
+
+
+
+
+	public Game getGame() {
+		return game;
+	}
+
+
+
+
+	public static void main(String[] args) {
         new App();
     }
 }

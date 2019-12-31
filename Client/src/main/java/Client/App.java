@@ -11,6 +11,8 @@ import java.net.URISyntaxException;
 import org.json.JSONObject;
 
 import Client.game.displays.Display;
+import Client.game.displays.input.KeyManager;
+import Client.game.displays.input.MouseManager;
 import Client.game.states.GameState;
 import Client.game.states.MenuState;
 import Client.game.states.State;
@@ -34,12 +36,19 @@ public class App implements Runnable{
 	private State menuState;
 	private State gameState;
 	
+	private KeyManager keyManager;
+	private MouseManager mouseManager;
+	
 	private ServerConnection connection;
 	
 	public App() throws URISyntaxException {
 		connection= new ServerConnection(new URI(serverUri));
 		
 		display = new Display("", 800, 600, false);
+		keyManager = new KeyManager();
+		display.addKeyManager(keyManager);
+		mouseManager = new MouseManager();
+		display.addMouseManager(mouseManager);
 		width = display.getWidth();
 		height = display.getHeight();
 		
@@ -51,6 +60,8 @@ public class App implements Runnable{
 	
 	private void tick() {
 		if(State.getCurrentState() !=null) {
+			keyManager.tick();
+			mouseManager.tick();
 			State.getCurrentState().tick();
 		}
 	}
