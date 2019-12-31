@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import org.json.JSONObject;
 
 import Client.App;
+import Client.Logger;
 
 public class GameState extends State{
 
@@ -14,7 +15,13 @@ public class GameState extends State{
 
 	@Override
 	public void tick() {
-		// TODO Auto-generated method stub
+		if(app.getMouseManager().isAleftPressed()) {
+			Logger.info("left Pressed");
+		}
+		
+		if(app.getMouseManager().isAleftClicked()) {
+			Logger.info("left Clicked");
+		}
 		
 	}
 

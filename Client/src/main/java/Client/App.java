@@ -166,6 +166,15 @@ public class App implements Runnable{
 	public State getGameState() {
 		return gameState;
 	}
+	
+
+	public KeyManager getKeyManager() {
+		return keyManager;
+	}
+
+	public MouseManager getMouseManager() {
+		return mouseManager;
+	}
 
 	/*********************************STATIC*********************/
 	public static void main(String[] args) throws URISyntaxException {

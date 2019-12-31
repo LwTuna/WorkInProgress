@@ -12,5 +12,5 @@ Every Packet is in JSON Format and contains a key:String attribut which is an id
 - Add Disconnect Handler to States
 - Add Login "Form"
 - Add UI-Manager to use
-- Enable Access to Mouse and Key Manager from States
+- Enable Connecting to Websocket?! Does not work atm
 - Add UI-Elements ( TextInput, Buttons etc.)
