@@ -10,6 +10,3 @@ Every Packet is in JSON Format and contains a key:String attribut which is an id
 
 ## NEXT TODO
 - Add Disconnect Handler to States
-- Add Login "Form"
-- Add UI-Manager to use
-- Add UI-Elements ( TextInput, Buttons etc.)

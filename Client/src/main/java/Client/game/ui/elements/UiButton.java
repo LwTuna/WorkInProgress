@@ -7,13 +7,13 @@ import Client.game.states.State;
 import Client.game.ui.UiElement;
 import Client.game.ui.elements.interfaces.UiOnClickListener;
 
-public class UiButton extends UiElement{
+public abstract class UiButton extends UiElement{
 
 	protected double width,height;
 	
 	private UiOnClickListener clickListener;
 	
-	private boolean hovering = false;
+	protected boolean hovering = false;
 	
 	public UiButton(App app,double x, double y,double width,double height,UiOnClickListener listener) {
 		super(app,x, y);
@@ -42,9 +42,7 @@ public class UiButton extends UiElement{
 	}
 
 	@Override
-	public void render(Graphics g) {
-		g.drawRect(State.getCurrentState().convertX(x), State.getCurrentState().convertY(y), State.getCurrentState().convertX(width), State.getCurrentState().convertY(height));
-	}
+	public abstract void render(Graphics g) ;
 
 	
 	

@@ -50,9 +50,9 @@ public class UiManager {
 	public void setFocused(UiElement component) {
 		if(focused !=null) {
 			focused.setFocused(false);
-			focused = component;
-			focused.setFocused(true);
 		}
+		focused = component;
+		focused.setFocused(true);
 	}
 	public UiElement getFocused() {
 		return focused;

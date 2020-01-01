@@ -78,8 +78,9 @@ public class App implements Runnable{
 		
 		
 		if(State.getCurrentState() !=null) {
-			State.getManager().render(g);
+			
 			State.getCurrentState().render(g);
+			State.getManager().render(g);
 		}
 		
 		bs.show();
@@ -179,7 +180,6 @@ public class App implements Runnable{
 		return mouseManager;
 	}
 
-	/*********************************STATIC*********************/
 	public static void main(String[] args) throws URISyntaxException {
        new App();
     }
