@@ -14,6 +14,11 @@ public class GameState extends State{
 	}
 
 	@Override
+	protected void onOpen() {
+		
+	}
+	
+	@Override
 	public void tick() {
 		if(app.getMouseManager().isAleftPressed()) {
 			Logger.info("left Pressed");
@@ -33,14 +38,14 @@ public class GameState extends State{
 
 	@Override
 	public void onServerMessage(JSONObject object) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void onDisconnect() {
-		// TODO Auto-generated method stub
 		
 	}
+
+	
 
 }

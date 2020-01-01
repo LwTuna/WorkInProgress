@@ -7,25 +7,30 @@ import org.json.JSONObject;
 
 import Client.App;
 import Client.Logger;
+import Client.game.ui.UiManager;
+import Client.game.ui.elements.UiButton;
 import Client.server.MessageHandler;
 
 public class MenuState extends State{
 
 	private HashMap<String,MessageHandler> handlers = new HashMap<>();
 	
+	
+	
 	public MenuState(App app) {
 		super(app);
 		handlers.put("loginResponse", this::handleLoginResponse);
 	}
 
+	@Override
+	protected void onOpen() {
+		manager.add(new UiButton(app, 0.1, 0.1, 0.2, 0.1, (app,uiEle)-> {sendLogin("testUser", "testPassword");}));
+		
+	}
 	
-	boolean sendLogin=false;
 	@Override
 	public void tick() {
-		if(!sendLogin) {
-			sendLogin("TestUsername", "TestPassword");
-			sendLogin = true;
-		}
+		
 		
 	}
 
@@ -55,7 +60,7 @@ public class MenuState extends State{
 
 	private void handleLoginResponse(JSONObject object) {
 		if(object.getBoolean("success")) {
-			State.setCurrentState(app.getGameState());
+			State.setCurrentState(app.getGameState(),app);
 		}
 		
 	}
@@ -64,8 +69,8 @@ public class MenuState extends State{
 
 	@Override
 	public void onDisconnect() {
-		//TODO
-		
 	}
+
+	
 
 }

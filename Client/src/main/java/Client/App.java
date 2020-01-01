@@ -63,6 +63,7 @@ public class App implements Runnable{
 		if(State.getCurrentState() !=null) {
 			keyManager.tick();
 			mouseManager.tick();
+			State.getManager().tick();
 			State.getCurrentState().tick();
 		}
 	}
@@ -77,6 +78,7 @@ public class App implements Runnable{
 		
 		
 		if(State.getCurrentState() !=null) {
+			State.getManager().render(g);
 			State.getCurrentState().render(g);
 		}
 		
@@ -86,7 +88,7 @@ public class App implements Runnable{
 	}
 	@Override
 	public void run() {
-		State.setCurrentState(menuState);
+		State.setCurrentState(menuState,this);
 		final int tps = 60;
  		final double timePerTick = 1000000000  / tps;
  		double delta = 0;
