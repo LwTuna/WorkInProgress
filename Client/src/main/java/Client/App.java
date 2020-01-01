@@ -43,6 +43,7 @@ public class App implements Runnable{
 	
 	public App() throws URISyntaxException {
 		connection= new ServerConnection(new URI(serverUri));
+		connection.connect();
 		
 		display = new Display("", 800, 600, false);
 		keyManager = new KeyManager();

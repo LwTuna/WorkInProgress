@@ -16,7 +16,7 @@ public class Game {
 	private App app;
 	
 	public Game(App app) {
-		handlers.put("login", this::login);
+		handlers.put("login",this::login);
 		this.app = app;
 	}
 	
@@ -34,11 +34,12 @@ public class Game {
 	
 	public void handle(WebSocket conn,String message) {
 		try {
+			
 			JSONObject obect = new JSONObject(message);
 			handlers.getOrDefault(obect.getString("key"),
 					(c,mess)->{
 						Logger.info("Cannot handle object because key="+obect.getString("key")+" was not found");
-						});
+						}).handle(conn, new JSONObject(message));;
 		}catch(JSONException x) {
 			Logger.err(x.getMessage());
 		}

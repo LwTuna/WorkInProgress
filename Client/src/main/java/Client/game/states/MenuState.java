@@ -6,6 +6,7 @@ import java.util.HashMap;
 import org.json.JSONObject;
 
 import Client.App;
+import Client.Logger;
 import Client.server.MessageHandler;
 
 public class MenuState extends State{
@@ -25,6 +26,7 @@ public class MenuState extends State{
 			sendLogin("TestUsername", "TestPassword");
 			sendLogin = true;
 		}
+		
 	}
 
 	@Override
