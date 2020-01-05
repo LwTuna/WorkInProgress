@@ -10,3 +10,5 @@ Every Packet is in JSON Format and contains a key:String attribut which is an id
 
 ## NEXT TODO
 - Add Disconnect Handler to States
+- Add World/Layer/Tiles
+- Add Game instance with update Handler

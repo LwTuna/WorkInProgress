@@ -8,5 +8,8 @@ Every Packet is in JSON Format and contains a key:String attribut which is an id
 
 ## Next TODO
 
-
+- Add Game class and Player handling
+- Create login database
+- Add World/Layer/Tiles
+- Add World/Player Saving
 	
