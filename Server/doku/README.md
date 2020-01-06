@@ -14,10 +14,10 @@ Path :
 - /res
 	- /saves
 		- /maps
-			-/mapName"                                 The Map name as String
-				-/0-0"                                 Chunk Coords representet by "x-y" exmpl 0-0
-					-/layers
-						-/0.txt                        layerid.txt in format of a 2-D Array of id:meta tokens
+			-/mapName                                 The Map name as String    
+				-/0-0                                 Chunk Coords representet by "x-y" exmpl 0-0    
+					-/layers    
+						-/0.txt                        layerid.txt in format of a 2-D Array of id:meta tokens    
 
 ## Next TODO
 
