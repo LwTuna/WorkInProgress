@@ -11,13 +11,10 @@ Every Packet is in JSON Format and contains a key:String attribut which is an id
 
 Path : 
 
-- /res
-	- /saves
-		- /maps
-			-/mapName                                 The Map name as String    
-				-/0-0                                 Chunk Coords representet by "x-y" exmpl 0-0    
-					-/layers    
-						-/0.txt                        layerid.txt in format of a 2-D Array of id:meta tokens    
+- /res/saves/maps/mapName/0-0/layers/0.txt                                       
+mapName - The Map name as String 	                                       
+0-0    - Chunk Coords representet by "x-y" exmpl 0-0       
+layerid.txt - in format of a 2-D Array of id:meta tokens        
 
 ## Next TODO
 
