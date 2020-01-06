@@ -1,6 +1,7 @@
 package Server.game;
 
 import java.util.HashMap;
+import java.util.Map;
 
 import org.java_websocket.WebSocket;
 import org.json.JSONException;
@@ -8,12 +9,15 @@ import org.json.JSONObject;
 
 import Server.App;
 import Server.Logger;
+import Server.game.world.GameMap;
 
 public class Game {
 
 	private HashMap<String,MessageHandler> handlers = new HashMap<>();
 	
 	private App app;
+	
+	private Map<String,GameMap> maps = new HashMap<>();
 	
 	public Game(App app) {
 		handlers.put("login",this::login);
@@ -43,5 +47,9 @@ public class Game {
 		}catch(JSONException x) {
 			Logger.err(x.getMessage());
 		}
+	}
+	
+	public void createMap(String name) {
+		maps.put(name, new GameMap());
 	}
 }
