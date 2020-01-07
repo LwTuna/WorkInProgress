@@ -32,13 +32,15 @@ public class Chunk {
 	}
 	
 	
-	public Chunk(String mapPath) {
+	public Chunk(String mapPath,Vector2i position) {
 		try {
-			JSONObject info=SaveManager.from(SaveManager.load(mapPath+"/chunk.txt"));
-			position = new Vector2i(info.getString("position"));
+			JSONObject info=SaveManager.from(SaveManager.load(mapPath+"/"+position.toString()+"/chunk.txt"));
+			this.position = position;
 			int layerCount  = info.getInt("layers");
+			players = new ArrayList<>();
+			layers = new ArrayList<>();
 			for(int i=0;i<layerCount ;i++) {
-				layers.add(new TileLayer(mapPath+"/layers/"+String.valueOf(i)+".txt"));
+				layers.add(new TileLayer(mapPath+"/"+position.toString()+"/layers/"+String.valueOf(i)+".txt"));
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -66,7 +68,7 @@ public class Chunk {
 	
 	public void save(String path) throws IOException {
 		for(int i=0;i<layers.size();i++) {
-			layers.get(i).save(path+"/layers/+"+i+".txt");
+			layers.get(i).save(path+"/layers/"+String.valueOf(i)+".txt");
 		}
 		JSONObject object = new JSONObject();
 		object.put("layers", layers.size());

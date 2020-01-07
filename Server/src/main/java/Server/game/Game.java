@@ -24,7 +24,7 @@ public class Game {
 	public Game(App app) {
 		handlers.put("login",this::login);
 		this.app = app;
-		maps.put("test", new GameMap());
+		maps.put("test", new GameMap("test"));
 		
 	}
 	

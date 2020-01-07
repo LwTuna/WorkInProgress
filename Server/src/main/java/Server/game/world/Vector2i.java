@@ -10,7 +10,7 @@ public class Vector2i {
 	}
 	
 	public Vector2i(String s) {
-		String[] split = s.split("-");
+		String[] split = s.split(";");
 		x = Integer.parseInt(split[0]);
 		y = Integer.parseInt(split[1]);
 	}
@@ -18,6 +18,6 @@ public class Vector2i {
 	
 	
 	public String toString() {
-		return x+"-"+y;
+		return x+";"+y;
 	}
 }

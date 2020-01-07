@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map.Entry;
 
+import org.json.JSONObject;
+
 public class GameMap {
 
 	private static final int SPAWN_CHUNKS_IN_EACH_DIRECTION = 4;
@@ -37,7 +39,7 @@ public class GameMap {
 		String mapPath = folderPath + "/"+name;
 		File folder = new File(mapPath);
 		for(String fp:folder.list()) {
-			chunks.put(fp, new Chunk(mapPath));
+			chunks.put(fp, new Chunk(mapPath,new Vector2i(fp)));
 		}
 	}
 	public void save(String name) throws IOException {
