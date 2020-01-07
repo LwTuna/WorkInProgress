@@ -28,7 +28,7 @@ public class Chunk {
 		this.position = position;
 		players = new ArrayList<>();
 		layers = new ArrayList<>();
-		
+		layers.add(new TileLayer());
 	}
 	
 	
@@ -38,7 +38,7 @@ public class Chunk {
 			position = new Vector2i(info.getString("position"));
 			int layerCount  = info.getInt("layers");
 			for(int i=0;i<layerCount ;i++) {
-				layers.add(new TileLayer(mapPath+"/layers/"+i+".txt"));
+				layers.add(new TileLayer(mapPath+"/layers/"+String.valueOf(i)+".txt"));
 			}
 		} catch (IOException e) {
 			e.printStackTrace();

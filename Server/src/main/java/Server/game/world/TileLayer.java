@@ -11,6 +11,11 @@ public class TileLayer {
 	
 	public TileLayer() {
 		tiles = new Tile[Chunk.DEFAULT_CHUNK_SIZE][Chunk.DEFAULT_CHUNK_SIZE];
+		for(int x=0;x<Chunk.DEFAULT_CHUNK_SIZE;x++) {
+			for(int y=0;y<Chunk.DEFAULT_CHUNK_SIZE;y++) {
+				tiles[x][y] = Tile.getTile(0, 0);
+			}
+		}
 	}
 	
 	

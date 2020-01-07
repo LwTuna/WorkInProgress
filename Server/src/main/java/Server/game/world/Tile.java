@@ -22,7 +22,7 @@ public class Tile {
 	
 	
 	public static Tile getTile(int id,int meta) {
-		return null;
+		return new Tile(id, meta, "da");
 	}
 	
 }

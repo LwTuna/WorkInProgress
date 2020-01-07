@@ -1,7 +1,9 @@
 package Server.game;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import org.java_websocket.WebSocket;
 import org.json.JSONException;
@@ -22,6 +24,8 @@ public class Game {
 	public Game(App app) {
 		handlers.put("login",this::login);
 		this.app = app;
+		maps.put("test", new GameMap());
+		
 	}
 	
 	public void login(WebSocket conn,JSONObject object) {
@@ -51,5 +55,11 @@ public class Game {
 	
 	public void createMap(String name) {
 		maps.put(name, new GameMap());
+	}
+	
+	public void save() throws IOException {
+		for(Entry<String,GameMap> map:maps.entrySet()) {
+			map.getValue().save(map.getKey());
+		}
 	}
 }

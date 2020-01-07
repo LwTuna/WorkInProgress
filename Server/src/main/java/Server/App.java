@@ -3,6 +3,7 @@
  */
 package Server;
 
+import java.io.IOException;
 import java.net.InetSocketAddress;
 
 import Server.game.Game;
@@ -18,8 +19,14 @@ public class App {
 
 	public App() {
 		game = new Game(this);
+		try {
+			game.save();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		server = new Server(new InetSocketAddress("localhost",port),this);
 		server.run();
+		
 		
 	}
 	
