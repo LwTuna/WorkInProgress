@@ -19,9 +19,11 @@ public class App {
 
 	public App() {
 		game = new Game(this);
-		
+		game.start();
 		server = new Server(new InetSocketAddress("localhost",port),this);
-		server.run();
+		Thread thread = new Thread(server);
+		thread.start();
+		
 		
 		
 	}

@@ -13,11 +13,14 @@ import Server.App;
 import Server.Logger;
 import Server.game.world.GameMap;
 
-public class Game {
+public class Game implements Runnable{
 
 	private HashMap<String,MessageHandler> handlers = new HashMap<>();
 	
 	private App app;
+	
+	private Thread thread;
+	private boolean running = false;
 	
 	private Map<String,GameMap> maps = new HashMap<>();
 	
@@ -39,7 +42,24 @@ public class Game {
 	}
 	
 	
+	@Override
+	public void run() {
+		while(running) {
+			
+		}
+	}
 	
+	public void start() {
+		if(running) return;
+		running = true;
+		thread = new Thread(this);
+		thread.start();
+	}
+	public void stop() throws InterruptedException {
+		if(!running) return;
+		running = false;
+		thread.join();
+	}
 	public void handle(WebSocket conn,String message) {
 		try {
 			
@@ -62,4 +82,6 @@ public class Game {
 			map.getValue().save(map.getKey());
 		}
 	}
+
+	
 }
