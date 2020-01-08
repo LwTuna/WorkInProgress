@@ -3,7 +3,6 @@
  */
 package Server;
 
-import java.io.IOException;
 import java.net.InetSocketAddress;
 
 import Server.game.Game;
