@@ -16,6 +16,7 @@ public class App {
 	private Server server;
 	
 	private Game game;
+	
 
 	public App() {
 		game = new Game(this);

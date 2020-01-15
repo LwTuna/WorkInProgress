@@ -8,7 +8,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import Client.Logger;
-import Client.game.states.State;
 
 public class ServerConnection extends WebSocketClient{
 
@@ -28,11 +27,7 @@ public class ServerConnection extends WebSocketClient{
 		try {
 			JSONObject object = new JSONObject(message);
 			
-			if(State.getCurrentState() == null) {
-				Logger.info("State is null");
-			}else {
-				State.getCurrentState().onServerMessage(object);
-			}
+			
 		}catch(JSONException ex) {
 			Logger.err(ex);
 		}
@@ -40,11 +35,7 @@ public class ServerConnection extends WebSocketClient{
 
 	@Override
 	public void onClose(int code, String reason, boolean remote) {
-		if(State.getCurrentState() == null) {
-			Logger.info("State is null");
-		}else {
-			State.getCurrentState().onDisconnect();
-		}
+		
 	}
 
 	@Override
