@@ -1,4 +1,4 @@
-package Client.game.engine;
+package Client.game.engine.render;
 
 import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.opengl.GL20.*;
@@ -15,12 +15,10 @@ public class Model {
 	private int vID;
 	private int tID;
 	private int iID;
-	private Texture texture;
 	
 	
 	
-	public Model(float[] verticies,float[] textureCoords,int[] indicies,Texture texture) {
-		this.texture = texture;
+	public Model(float[] verticies,float[] textureCoords,int[] indicies) {
 		vCount = indicies.length;
 		
 		vID = glGenBuffers();
@@ -40,8 +38,7 @@ public class Model {
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
 	}
 
-	public void render(int sampler) {
-		texture.bind(sampler);
+	public void render() {
 		
 		//enable
 		glEnableVertexAttribArray(0);
@@ -63,9 +60,6 @@ public class Model {
 		//disable
 		glDisableVertexAttribArray(0);
 		glDisableVertexAttribArray(1);
-	}
-	public void render() {
-		render(0);
 	}
 	private FloatBuffer createBuffer(float[] data) {
 		FloatBuffer buffer = BufferUtils.createFloatBuffer(data.length);

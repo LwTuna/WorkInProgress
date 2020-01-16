@@ -17,8 +17,12 @@ import org.joml.Vector3f;
 import org.lwjgl.opengl.GL;
 
 import Client.Logger;
+import Client.game.engine.io.Timer;
+import Client.game.engine.io.Window;
+import Client.game.engine.render.Camera;
+import Client.game.engine.render.Model;
+import Client.game.engine.render.Texture;
 import Client.game.engine.shaders.Shader;
-import Client.game.engine.time.Timer;
 
 public class Main implements Runnable{
 
@@ -30,10 +34,6 @@ public class Main implements Runnable{
 	private Shader shader;
 	
 	private Camera camera;
-
-	
-	private Model model;
-	
 	private final int TPS = 60;
 	
 	Matrix4f target,projection,scale;
@@ -58,18 +58,7 @@ public class Main implements Runnable{
 		camera.add(new Vector3f(-100,0,10));
 		shader = new Shader("shader");
 		
-		model = new Model(
-		   new float[] {
-				-1,1,0,
-				1,1,0,
-				1,-1,0,
-				-1,-1,0
-		}, new float[] {
-				0,0,1,0,1,1,0,1
-		}, new int[] {
-				0,1,2,
-				2,3,0
-		}, new Texture("./res/test.png"));
+		
 		
 		 projection = new Matrix4f().ortho2D(-window.getWidth()/2, window.getWidth()/2, -window.getHeight()/2, window.getHeight()/2);
 		 scale = new Matrix4f().scale(3);
@@ -103,10 +92,10 @@ public class Main implements Runnable{
 				canRender = true;
 				
 				target = scale;
-				if(window.getInput().isKeyDown(GLFW_KEY_ESCAPE)) {
+				if(window.getInput().isKeyPressed(GLFW_KEY_ESCAPE)) {
 					glfwSetWindowShouldClose(window.getWindow(), true);
 				}
-				glfwPollEvents();
+				window.update();
 				
 				if(frameTime >= 1) {
 					frameTime =0;
@@ -123,7 +112,7 @@ public class Main implements Runnable{
 				shader.setUniform("sampler", 0);
 				shader.setUniform("projection", camera.getProjection().mul(target));
 				//RENDER STUFF
-				model.render();
+				
 				
 				window.swapBuffers();
 				

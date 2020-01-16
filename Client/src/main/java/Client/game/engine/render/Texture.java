@@ -1,4 +1,4 @@
-package Client.game.engine;
+package Client.game.engine.render;
 
 import java.awt.image.BufferedImage;
 import java.io.File;

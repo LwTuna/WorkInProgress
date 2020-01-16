@@ -1,4 +1,4 @@
-package Client.game.engine;
+package Client.game.engine.render;
 
 import org.joml.Matrix4f;
 import org.joml.Vector3f;

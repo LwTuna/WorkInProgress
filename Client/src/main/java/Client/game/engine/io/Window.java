@@ -1,4 +1,4 @@
-package Client.game.engine;
+package Client.game.engine.io;
 
 import static org.lwjgl.opengl.GL20.*;
 
@@ -54,7 +54,10 @@ public class Window {
 		input = new InputManager(window);
 	}
 	
-	
+	public void update() {
+		input.update();
+		glfwPollEvents();
+	}
 	
 	public long getWindow() {
 		return window;
