@@ -10,7 +10,7 @@ import java.net.URISyntaxException;
 
 import org.json.JSONObject;
 
-import Client.game.engine.Main;
+import Client.game.engine.WindowManager;
 import Client.server.ServerConnection;
 
 public class App{
@@ -19,7 +19,7 @@ public class App{
 	private static final String serverUri = "ws://localhost:8888";
 	
 	
-	private Main window;
+	private WindowManager window;
 	
 	private Thread thread;
 	
@@ -30,7 +30,7 @@ public class App{
 //		connection= new ServerConnection(new URI(serverUri));
 //		connection.connect();
 		
-		window = new Main();
+		window = new WindowManager();
 		thread = new Thread(window);
 		thread.start();
 	}
