@@ -36,14 +36,14 @@ public class Game {
 	
     }
     public void init() {
-	Assets.init();
-	renderer = new TileRenderer();
-	if(offline) {
-	    world = new World();
-	    world.calculateView(manager.getWindow());
-	}else {
-	    getWorld();
-	}
+		Assets.init();
+		renderer = new TileRenderer();
+		if(offline) {
+		    world = new World();
+		    world.calculateView(manager.getWindow());
+		}else {
+		    getWorld();
+		}
     }
     
     public void update(float delta, Window window, Camera camera) {
