@@ -10,6 +10,8 @@ public abstract class GuiElement {
     protected Vector2f position,scale;
     protected Model model;
     
+    protected boolean pressed = false;
+    
     private boolean hovering = false;
     
     public GuiElement( Vector2f position, Vector2f scale) {
@@ -52,6 +54,16 @@ public abstract class GuiElement {
 		scale.y*2
 	);
 	
+    }
+
+
+    public boolean isPressed() {
+        return pressed;
+    }
+
+
+    public void setPressed(boolean pressed) {
+        this.pressed = pressed;
     }
     
     

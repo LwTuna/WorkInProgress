@@ -6,10 +6,7 @@ import java.util.List;
 import org.joml.Matrix4f;
 import org.joml.Vector2f;
 import org.joml.Vector3f;
-
-import Client.game.assets.Assets;
 import Client.game.engine.io.Window;
-import Client.game.engine.render.Model;
 
 public class GuiManager {
 
@@ -20,11 +17,13 @@ public class GuiManager {
     
     private GuiShader shader;
     
+    
     public GuiManager() {
 	shader = new GuiShader();
 	guis = new ArrayList<GuiElement>();
+	
     }
-    public void render() {
+    public void render(Window window) {
 	for(GuiElement gui:guis) {
 	    gui.render(shader);
 	}
@@ -38,9 +37,12 @@ public class GuiManager {
 	 yR -= window.getHeight()/2;
 	 yR /= window.getHeight()/2;
 	for(GuiElement gui:guis) {
-	    
 	   BoundingBox r = gui.getBounding();
 	   gui.setHovering(r.contains(xR, yR));
+	   gui.setPressed(gui.isHovering() && window.getInput().isMouseDown(0)); 
+	   if(gui.isHovering() && window.getInput().mouseReleased(0)) {
+	       gui.onClick();
+	   }
 	}
     }
     

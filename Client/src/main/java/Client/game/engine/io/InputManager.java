@@ -8,12 +8,16 @@ public class InputManager {
 
 	private long window;
 	
-	private boolean[] keys;
+	private boolean[] keys,mouse;
 	private double mouseX = 0,mouseY = 0;
 
 	public InputManager(long window) {
 		this.window = window;
 		keys = new boolean[348];
+		mouse = new boolean[3];
+		for(int i=0;i<mouse.length;i++) {
+		    mouse[i] = false;
+		}
 		for(int i=0;i<keys.length;i++) {
 			keys[i] = false;
 		}
@@ -37,6 +41,10 @@ public class InputManager {
 	    return glfwGetMouseButton(window, button) == 1;
 	}
 	
+	public boolean mouseReleased(int button) {
+	    return !isMouseDown(button) && mouse[button];
+	}
+	
 	public boolean isKeyPressed(int key) {
 		return isKeyDown(key)&&!keys[key];
 	}
@@ -46,6 +54,10 @@ public class InputManager {
 	public void update() {
 		for(int i=32;i<keys.length;i++) {
 			keys[i] = isKeyDown(i);
+		}
+		
+		for(int i=0;i<mouse.length;i++) {
+		    	mouse[i] = isMouseDown(i);
 		}
 	}
 	

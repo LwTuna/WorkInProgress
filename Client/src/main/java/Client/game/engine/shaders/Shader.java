@@ -83,6 +83,7 @@ public class Shader {
 		glUseProgram(program);
 	}
 	
+	
 	private String readFile (String filename) {
 		StringBuilder string = new StringBuilder();
 		

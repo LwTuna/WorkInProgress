@@ -1,5 +1,6 @@
 package Client.game;
 
+import java.awt.Font;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,6 +12,7 @@ import Client.App;
 import Client.game.assets.Assets;
 import Client.game.engine.WindowManager;
 import Client.game.engine.gui.GuiManager;
+import Client.game.engine.gui.GuiTextLine;
 import Client.game.engine.gui.GuiButton;
 import Client.game.engine.gui.GuiElement;
 import Client.game.engine.io.Window;
@@ -47,7 +49,12 @@ public class Game {
 	Assets.init();
 	renderer = new TileRenderer();
 	guiManager = new GuiManager();
-	guiManager.getGuis().add(new GuiButton(new Texture[] {new Texture("test.png"),new Texture("test2.png")}, new Vector2f(0.5f), new Vector2f(0.25f)));
+	
+	GuiButton button = new GuiButton(new Texture[] {new Texture("test.png"),new Texture("test2.png"),new Texture("test3.png")}, new Vector2f(0.5f), new Vector2f(0.25f));
+	button.add((event)->{System.out.println("ITS A ME MARIO");});
+	
+	guiManager.getGuis().add(button);
+	guiManager.getGuis().add(new GuiTextLine("Button!", new Vector2f(0.5f), new Vector2f(0.25f),  new Font("Arial", Font.PLAIN, 48)));
 	if(offline) {
 	    world = new World();
 	    world.calculateView(manager.getWindow());
@@ -65,7 +72,7 @@ public class Game {
     public void render(Shader shader,Camera camera,Window window) {
 	if(world != null) 
 	    world.render(renderer, shader, camera);
-	guiManager.render();
+	guiManager.render(window);
 	
     }
     public void onMessage(JSONObject object) {
