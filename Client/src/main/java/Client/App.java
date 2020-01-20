@@ -10,6 +10,7 @@ import java.net.URISyntaxException;
 
 import org.json.JSONObject;
 
+import Client.game.Game;
 import Client.game.engine.WindowManager;
 import Client.server.ServerConnection;
 
@@ -19,41 +20,45 @@ public class App{
 	private static final String serverUri = "ws://localhost:8888";
 	
 	
-	private WindowManager window;
-	
-	private Thread thread;
+	private Game game;
 	
 	
 	private ServerConnection connection;
 	
-	public App() throws URISyntaxException {
-//		connection= new ServerConnection(new URI(serverUri));
-//		connection.connect();
+	public App(boolean offline) throws URISyntaxException {
+	    game = new Game(this,offline);
+	    if(!offline) {
+		connection= new ServerConnection(new URI(serverUri),this);
+		connection.connect();
+	    }
+	    
 		
-		window = new WindowManager();
-		thread = new Thread(window);
-		thread.start();
+		
 	}
 	
 	
 	
 	
 	
-	public void send(JSONObject object) {
+	public boolean send(JSONObject object) {
 		if(connection.isOpen()) {
 			connection.send(object.toString());
+			return true;
 		}else {
 			Logger.info("Cannot send object because connection is not open!");
+			return false;
 		}
 		
 	}
 	
-
+	public void onMessage(JSONObject object) {
+	    game.onMessage(object);
+	}
 	
 	
 
 	public static void main(String[] args) throws URISyntaxException {
-       new App();
+	    new App(false);
     }
     
 	

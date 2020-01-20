@@ -50,6 +50,8 @@ public class GameMap {
 	}
 	
 	
-	
+	public HashMap<String, Chunk> getChunks() {
+	    return chunks;
+	}
 	
 }

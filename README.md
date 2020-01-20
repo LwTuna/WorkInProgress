@@ -13,6 +13,8 @@
 	- [Gameplay](#gameplay)
 		- [Game Progression](#game-progression)    
 		- [Missions/Challenge Structure/ Objectives](#missionschallenge-structure-objectives)    
+		- [Mechanics](#mechanics)
+		- [Game Options](#game-options)
 		
 [Story, Setting and Character](#story-setting-and-character)    
 [Interface](#interface)    
@@ -65,7 +67,7 @@ This can be expanded to much higher level to even gathering the diffrent materia
 
 Also food is a necessary resource for every player so it also can be a postive or negativ influence to your working behaviour, by feeling good increasing your productivity or maybe making you vomit every 20 sec or so.
 
-Ok now to the Caves and or Dungeons. I haven't really thinked about them much but it really should be rewarding enough to fully commit to them if you want. The skill cap shouldn't be to high and also rewarding by completing difficult dungeons in a party. Either having a "Portal" to a random create dungeon with predetermined difficulty or a layer/level based floor design. It might become more visible in development.    
+Ok now to the Caves and or Dungeons. I haven't really thinked about them much but it really should be rewarding enough to fully commit to them if you want. The skill cap can be high and also rewarding by completing difficult dungeons in a party. Either having a "Portal" to a random create dungeon with predetermined difficulty or a layer/level based floor design. It might become more visible in development.    
 
 #### Missions/Challenge Structure/ Objectives
 Ok this one might be not new but it should be a goal for yourself to get to the top of progression, of economy, having a cool own island with every machine/crafting station that exist or become the most powerfull arch mage on the server. Maybe you want to master all of the skill trees. Who knows? =)    

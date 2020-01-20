@@ -7,19 +7,22 @@ import org.java_websocket.handshake.ServerHandshake;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import Client.App;
 import Client.Logger;
 
 public class ServerConnection extends WebSocketClient{
 
+	private App app;
 	
-	
-	public ServerConnection(URI serverUri) {
+	public ServerConnection(URI serverUri,App app) {
 		super(serverUri);
+		this.app = app;
 	}
 
 	@Override
 	public void onOpen(ServerHandshake handshakedata) {
 		Logger.info("Opened");
+		
 	}
 
 	@Override
@@ -27,7 +30,7 @@ public class ServerConnection extends WebSocketClient{
 		try {
 			JSONObject object = new JSONObject(message);
 			
-			
+			app.onMessage(object);
 		}catch(JSONException ex) {
 			Logger.err(ex);
 		}

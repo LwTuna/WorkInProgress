@@ -3,6 +3,8 @@ package Server.game.world;
 import java.io.IOException;
 import java.util.List;
 
+import org.json.JSONArray;
+
 import Server.game.world.saves.SaveManager;
 
 public class TileLayer {
@@ -49,4 +51,16 @@ public class TileLayer {
 	}
 	
 	
+	public JSONArray toJSONArray() {
+	    JSONArray array = new  JSONArray();
+	    for(int y=0;y<Chunk.DEFAULT_CHUNK_SIZE;y++) {
+		JSONArray row = new JSONArray();
+		  for(int x=0;x<Chunk.DEFAULT_CHUNK_SIZE;x++) {
+		      String token = tiles[x][y].getId()+":"+ tiles[x][y].getMetaId();
+		      row.put(token);
+		  }
+		array.put(row);
+	    }
+	    return array;
+	}
 }

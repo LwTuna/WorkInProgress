@@ -46,9 +46,12 @@ public class Chunk {
 			e.printStackTrace();
 		}
 	}
-
-
 	
+
+
+	public List<TileLayer> getLayers() {
+	    return layers;
+	}
 
 
 	

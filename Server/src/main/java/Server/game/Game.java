@@ -11,6 +11,7 @@ import org.json.JSONObject;
 
 import Server.App;
 import Server.Logger;
+import Server.game.world.Chunk;
 import Server.game.world.GameMap;
 
 public class Game implements Runnable{
@@ -26,6 +27,7 @@ public class Game implements Runnable{
 	
 	public Game(App app) {
 		handlers.put("login",this::login);
+		handlers.put("getWorld", this::getWorld);
 		this.app = app;
 		maps.put("test", new GameMap("test"));
 		
@@ -41,6 +43,14 @@ public class Game implements Runnable{
 		conn.send(response.toString());
 	}
 	
+	public void getWorld(WebSocket conn,JSONObject object) {
+	    JSONObject response = new JSONObject();
+	    response.put("key", "world");
+	    response.put("width", Chunk.DEFAULT_CHUNK_SIZE);
+	    response.put("height", Chunk.DEFAULT_CHUNK_SIZE);
+	    response.put("world", maps.get("test").getChunks().get("0;0").getLayers().get(0).toJSONArray());
+	    conn.send(response.toString());
+	}
 	
 	@Override
 	public void run() {

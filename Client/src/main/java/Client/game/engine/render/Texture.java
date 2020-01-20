@@ -45,7 +45,6 @@ public class Texture {
 
 			
 			pixels.flip();
-			
 			id = glGenTextures();
 			
 			glBindTexture(GL_TEXTURE_2D, id);
@@ -60,6 +59,8 @@ public class Texture {
 		}
 	}
 
+	
+	
 	
 	public void bind(int sampler) {
 		if(sampler>=0 && sampler <= 31) {
