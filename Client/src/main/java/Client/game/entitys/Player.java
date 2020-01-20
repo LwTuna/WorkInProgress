@@ -4,8 +4,8 @@ import org.joml.Vector2f;
 import org.joml.Vector3f;
 import org.lwjgl.glfw.GLFW;
 
+import Client.game.assets.Assets;
 import Client.game.engine.io.Window;
-import Client.game.engine.render.Assets;
 import Client.game.engine.render.Camera;
 import Client.game.engine.render.Texture;
 import Client.game.world.World;

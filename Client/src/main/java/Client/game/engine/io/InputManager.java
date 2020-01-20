@@ -2,11 +2,14 @@ package Client.game.engine.io;
 
 import static org.lwjgl.glfw.GLFW.*;
 
+import org.lwjgl.glfw.GLFWCursorPosCallback;
+
 public class InputManager {
 
 	private long window;
 	
 	private boolean[] keys;
+	private double mouseX = 0,mouseY = 0;
 
 	public InputManager(long window) {
 		this.window = window;
@@ -14,9 +17,18 @@ public class InputManager {
 		for(int i=0;i<keys.length;i++) {
 			keys[i] = false;
 		}
+		glfwSetCursorPosCallback(window, (win, xpos, ypos)->{
+		    mouseX = xpos;
+		    mouseY = ypos;
+		});
 	}
 	
-	
+	public double getMouseX() {
+	    return mouseX;
+	}
+	public double getMouseY() {
+	    return mouseY;
+	}
 	public boolean isKeyDown(int key) {
 	    return glfwGetKey(window, key) == 1;
 	}

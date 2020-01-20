@@ -5,8 +5,8 @@ import org.joml.Vector2f;
 import org.joml.Vector3f;
 import org.lwjgl.glfw.GLFW;
 
+import Client.game.assets.Assets;
 import Client.game.engine.io.Window;
-import Client.game.engine.render.Assets;
 import Client.game.engine.render.Camera;
 import Client.game.engine.render.Model;
 import Client.game.engine.render.Texture;
@@ -15,7 +15,6 @@ import Client.game.world.World;
 
 public abstract class Entity{
 
-    private static Model model;
     private Texture texture;
     
     protected Transform transform;
@@ -23,7 +22,6 @@ public abstract class Entity{
     public Entity(Texture texture,Transform transform) {
 	this.transform = transform;
 	this.texture = texture;
-	model = Assets.model;
     }
     
     
@@ -40,7 +38,7 @@ public abstract class Entity{
 	shader.setUniform("sampler", 0);
 	shader.setUniform("projection", transform.getProjection(target));
 	texture.bind(0);
-	model.render();
+	Assets.model.render();
     }
     
     

@@ -1,4 +1,7 @@
-package Client.game.engine.render;
+package Client.game.assets;
+
+import Client.game.engine.render.Model;
+import Client.game.engine.render.Texture;
 
 public class Assets {
 

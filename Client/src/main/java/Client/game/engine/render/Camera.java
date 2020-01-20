@@ -30,6 +30,10 @@ public class Camera {
 		return projection.translate(position,new Matrix4f());
 	}
 	
+	public Matrix4f getUntransformedProjection() {
+		return projection;
+	}
+	
 	public void setProjection(int width,int height) {
 
 		projection = new Matrix4f().setOrtho2D(-width/2, width/2, -height/2, height/2);

@@ -48,6 +48,8 @@ public class WindowManager implements Runnable{
 		GL.createCapabilities();
 		
 		glEnable(GL_TEXTURE_2D);
+		glEnable (GL_BLEND); 
+		glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 		
 		camera = new Camera(window.getWidth(), window.getHeight());
 		camera.getPosition().sub(new Vector3f(700,-700,0));
@@ -81,7 +83,6 @@ public class WindowManager implements Runnable{
 			    	if(window.hasResized()) {
 			    	    
 			    	    camera.setProjection(window.getWidth(), window.getHeight());
-			    	    
 			    	    glViewport(0,0,window.getWidth(),window.getHeight());
 			    	}
 			    
