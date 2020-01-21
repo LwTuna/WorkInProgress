@@ -45,7 +45,8 @@ processing machines and chests etc...
 Players of each age but 14+ ? Because they should bring a little knowledge on basic progress ages. May be confusing for younger ppl.    
 
 ### Look and Feel
-This one is a hard choice because it impacts the whole atmosphere of the game. It should be an 2D with an isometric view. The Movement and the controls should be easy to understand. And the UI should only contain the most necessary components with expandable options.     
+This one is a hard choice because it impacts the whole atmosphere of the game. The Movement and the controls should be easy to understand. And the UI should only contain the most necessary components with expandable options.    
+*Edit* Trying to create new Engine for 3D to make a 3rd Person Birds View thing game 
 
 ## Gameplay and Mechanics
 ### Gameplay
