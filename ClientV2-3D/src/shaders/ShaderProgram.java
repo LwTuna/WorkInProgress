@@ -1,19 +1,25 @@
 package shaders;
 
+import static org.lwjgl.opengl.GL11.GL_FALSE;
+import static org.lwjgl.opengl.GL20.*;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.FloatBuffer;
 
-import org.lwjgl.opengl.GL20;
-
-import static org.lwjgl.opengl.GL11.*;
-import static org.lwjgl.opengl.GL20.*;
+import org.lwjgl.BufferUtils;
+import org.lwjgl.util.vector.Matrix4f;
+import org.lwjgl.util.vector.Vector2f;
+import org.lwjgl.util.vector.Vector3f;
 
 public abstract class ShaderProgram {
 
     private int programID;
     private int vertexShaderID;
     private int fragmentShaderID;
+    
+    private static FloatBuffer matrixBuffer = BufferUtils.createFloatBuffer(16);
     
     public ShaderProgram(String vertexFile,String fragmentFile) {
 	vertexShaderID = loadShader(vertexFile, GL_VERTEX_SHADER);
@@ -25,6 +31,13 @@ public abstract class ShaderProgram {
 	glValidateProgram(programID);
 	
 	bindAttributes();
+	getAllUniformLocations();
+    }
+    
+    protected abstract void getAllUniformLocations();
+    
+    protected int getUniformLocation(String uniformName) {
+	return glGetUniformLocation(programID, uniformName);
     }
     
     public void start() {
@@ -50,6 +63,28 @@ public abstract class ShaderProgram {
 	glBindAttribLocation(programID, attribute, variableName);
     }
     
+    protected void loadFloat(int location,float value) {
+	glUniform1f(location, value);
+    }
+    protected void loadVector3f(int location,Vector3f value) {
+	glUniform3f(location, value.x, value.y, value.z);
+    }
+    
+    protected void loadVector2f(int location,Vector2f value) {
+	glUniform2f(location, value.x, value.y);
+    }
+    protected void loadMatrix(int location,Matrix4f value) {
+	value.store(matrixBuffer);
+	matrixBuffer.flip();
+	glUniformMatrix4(location, false, matrixBuffer);
+    }
+    protected void loadBoolean(int location,boolean value) {
+	glUniform1f(location, (value) ? 1 : 0);
+    }
+    
+    protected void loadFloat(int location,int value) {
+	glUniform1i(location, value);
+    }
     
     private static int loadShader(String file, int type){
         StringBuilder shaderSource = new StringBuilder();

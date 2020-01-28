@@ -13,12 +13,19 @@ Represents a "Model" in Code
 
 A VBO(Vertex Buffer Object) is an Array of those Information used for the VAO. So all the Vertex Positions are Stored in a VBO and the Put in the VAO.
 Alias: AttributeList
+
 ### Raw Model
 A Raw Model contains the id of a Model VAO and the vertex count
 
 ### Shaders
 Programs Executed on the GPU to determine Colors/Positions on Screen    
 
+MODEL DATA in VAO => |VertexShader| => per Vertex variables => |FragmentShader| => pixel Color     
+Uniform Variables => |Vertex/Fragment Shader|
+
+#### Uniform Variables
+Variables from Java Code, changed by any time to change Shader behaviour
+Can be Loaded/Changed from java by their locations    
 #### Vertex Shader
 Calculates The Vertex Positions on Screen and the Values(like Colors) used in the fragment Shader of each vertex    
 Get the VAO Model Data as an Input
@@ -32,3 +39,9 @@ Mostly Mixes The Color of the vertices of the triangle
 ## Textures
 Just used PNG Imgs.
 UV equal to XY at coordinate system
+
+## Math
+
+### Transformation Matrix
+
+Transforms Size, Position and Rotation of a given Model
