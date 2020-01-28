@@ -21,6 +21,7 @@ public class DisplayManager {
 	try {
 	    Display.setDisplayMode(new DisplayMode(width, height));
 	    Display.setTitle(title);
+	    
 	    Display.setResizable(true);
 	    Display.create(new PixelFormat(),attribs);
 	} catch (LWJGLException e) {
