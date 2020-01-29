@@ -54,7 +54,7 @@ public class Game {
 	button.add((event)->{System.out.println("ITS A ME MARIO");});
 	
 	guiManager.getGuis().add(button);
-	guiManager.getGuis().add(new GuiTextLine("Button!", new Vector2f(0.75f), new Vector2f(0.25f),  new Font("Arial", Font.PLAIN, 48)));
+	guiManager.getGuis().add(new GuiTextLine("Hallo!", new Vector2f(0.75f), new Vector2f(0.25f),  new Font("Arial", Font.PLAIN, 48)));
 	if(offline) {
 	    world = new World();
 	    world.calculateView(manager.getWindow());
