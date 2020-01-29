@@ -4,11 +4,13 @@ import org.lwjgl.opengl.Display;
 
 import models.RawModel;
 import models.TexturedModel;
+import org.lwjgl.util.vector.Vector3f;
 import renderEngine.DisplayManager;
 import renderEngine.Loader;
 import renderEngine.Renderer;
 import shaders.StaticShader;
 import textures.ModelTexture;
+import toolbox.Transform;
 
 public class MainGameLoop {
 
@@ -45,6 +47,7 @@ public class MainGameLoop {
 	    renderer.prepare();
 	    shader.start();
 	    //render
+		shader.loadTransformationMatrixx(new Transform(new Vector3f(),new Vector3f(),1).getMatrix());
 	    renderer.render(texturedModel);
 	    
 	    shader.stop();
