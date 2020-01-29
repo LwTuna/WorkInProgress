@@ -38,9 +38,10 @@ public class Loader {
     public int loadTexture(String fileName) {
 	Texture texture = null;
 	try {
-	    texture = TextureLoader.getTexture("PNG", new FileInputStream("./ClientV2-3D/res/"+fileName+".png"));
+	    texture = TextureLoader.getTexture("PNG", new FileInputStream("res/"+fileName+".png"));
 	} catch (IOException e) {
 	    e.printStackTrace();
+	    System.exit(0);
 	}
 	int textureID = texture.getTextureID();
 	textures.add(textureID);
