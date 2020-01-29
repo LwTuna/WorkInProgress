@@ -44,4 +44,28 @@ UV equal to XY at coordinate system
 
 ### Transformation Matrix
 
-Transforms Size, Position and Rotation of a given Model
+Transforms Size, Position and Rotation of a given Model to the Screen
+
+### Projection Matrix
+
+Calculate the Objects Position with the :
+- Field of View Angle
+- Near Plane Distance
+- Far Plane Distance    
+Matrix :    
+|(1/tan(fov/2))/a | 0 | 0 | 0 |    
+| 0 | 1/tan(fov/2) | 0 | 0 |   
+| 0 | 0 | -zp/zm | -(2*Zfar*Znear)/zm |   
+| 0 | 0 | -1 | 0 |   
+a = Ascpect Ratio   
+fov = Field Of View   
+Zfar = far Plane distance   
+ZNear = near Plane distance   
+zm = Zfar - Znear   
+zp = Zfar + Znear   
+
+[Explanation Here](http://www.songho.ca/opengl/gl_projectionmatrix.html)
+
+### View Matrix
+
+The Offset of the Camera to draw Objects in relation to the camera Position
