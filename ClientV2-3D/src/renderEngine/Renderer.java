@@ -45,6 +45,7 @@ public class Renderer {
 
         glEnableVertexAttribArray(0);
         glEnableVertexAttribArray(1);
+        glEnableVertexAttribArray(2);
 
         Matrix4f transformationMatrix = entity.getTransform().getMatrix();
         shader.loadTransformationMatrix(transformationMatrix);
@@ -57,7 +58,7 @@ public class Renderer {
 
         glDisableVertexAttribArray(0);
         glDisableVertexAttribArray(1);
-
+        glDisableVertexAttribArray(2);
         glBindVertexArray(0);
     }
 

@@ -1,6 +1,7 @@
 package engineTester;
 
 import entities.Entity;
+import entities.Light;
 import models.loading.Loader;
 import models.loading.ModelData;
 import models.loading.OBJLoader;
@@ -26,12 +27,12 @@ public class MainGameLoop {
         Renderer renderer = new Renderer(shader);
 
 
-        ModelData data = OBJLoader.loadOBJ("test");
+        ModelData data = OBJLoader.loadOBJ("stone");
         RawModel model = loader.loadToVAO(data.getVertices(),data.getTextureCoords(),data.getNormals(),data.getIndices());
-        ModelTexture texture = new ModelTexture(loader.loadTexture("modelText"));
+        ModelTexture texture = new ModelTexture(loader.loadTexture("stone"));
         TexturedModel texturedModel = new TexturedModel(model, texture);
 		Entity entity = new Entity(texturedModel,new Transform(new Vector3f(0,0,-10),new Vector3f(0,180,0),1));
-
+        Light light = new Light(new Vector3f(0,1,-5),new Vector3f(1,1,1));
 		Camera camera = new Camera();
         while (!Display.isCloseRequested()) {
 
@@ -39,8 +40,9 @@ public class MainGameLoop {
             camera.move();
 
             shader.start();
+            shader.loadLight(light);
             shader.loadViewMatrix(camera);
-            entity.increaseRotation(0,-0.1f,0);
+            entity.increaseRotation(0,-0.4f,0);
             renderer.render(entity,shader);
 
             shader.stop();

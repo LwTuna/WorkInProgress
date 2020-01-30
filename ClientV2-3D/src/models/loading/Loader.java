@@ -114,6 +114,7 @@ public class Loader {
         bindIncicesBuffer(indicesArray);
         storeDataInAttributeList(0, 3, verticesArray);
         storeDataInAttributeList(1, 2, textureArray);
+        storeDataInAttributeList(2,3,normalsArray);
         unbindVAO();
         return new RawModel(vaoID, indicesArray.length);
     }
