@@ -23,32 +23,27 @@ public class MainGameLoop {
 
         Loader loader = new Loader();
 
-        StaticShader shader = new StaticShader();
-        Renderer renderer = new Renderer(shader);
-
+        MasterRenderer renderer = new MasterRenderer();
 
         ModelData data = OBJLoader.loadOBJ("stone");
         RawModel model = loader.loadToVAO(data.getVertices(),data.getTextureCoords(),data.getNormals(),data.getIndices());
         ModelTexture texture = new ModelTexture(loader.loadTexture("stone"));
         TexturedModel texturedModel = new TexturedModel(model, texture);
 		Entity entity = new Entity(texturedModel,new Transform(new Vector3f(0,0,-10),new Vector3f(0,180,0),1));
-        Light light = new Light(new Vector3f(0,1,-5),new Vector3f(1,1,1));
+		entity.getModel().getTexture().setShineDamper(10);
+        entity.getModel().getTexture().setReflectivity(0.1f);
+        Light sun = new Light(new Vector3f(0,5,-5),new Vector3f(1,1,1));
 		Camera camera = new Camera();
         while (!Display.isCloseRequested()) {
-
-            renderer.prepare();
             camera.move();
 
-            shader.start();
-            shader.loadLight(light);
-            shader.loadViewMatrix(camera);
-            entity.increaseRotation(0,-0.4f,0);
-            renderer.render(entity,shader);
+            renderer.processEntity(entity);
 
-            shader.stop();
+            renderer.render(sun,camera);
+
             DisplayManager.updateDisplay();
         }
-        shader.cleanUp();
+        renderer.cleanUp();
         loader.cleanUp();
         DisplayManager.closeDisplay();
     }

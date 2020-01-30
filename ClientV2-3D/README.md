@@ -102,3 +102,7 @@ zp = Zfar + Znear
 ### View Matrix
 
 The Offset of the Camera to draw Objects in relation to the camera Position
+
+## Light
+Reflectivity -> How Strong the Light Should be reflected from surface of an object, 0-> no reflectivity    
+Shien damping -> How far the Camera can get away from the reflected Light Angle to notice the reflection    
