@@ -36,9 +36,42 @@ Outputs the pixel Color
 Executed for every Pixel    
 Mostly Mixes The Color of the vertices of the triangle
 
-## Textures
-Just used PNG Imgs.
-UV equal to XY at coordinate system
+
+
+## Models
+
+### Wavefront .obj File format
+I Build an OBJ File Loader in the Engine but it uses a specific .obj export when working with blender    
+
+IMPORTANT SETTINGS : 
+- Geometry
+    - Write normals
+    - Include Uvs
+    - Triangulate Faces
+- Transform
+    - -Z Forward
+    - Y Up
+    - Path Auto
+
+#### Documentation    
+for each line   
+v = vertex Positon   
+vt = texture Coord   
+vn = normals   
+f = vertex1/texture1/normal1 v2/t2/n2 v3/t3/n3 is one face/triangle out of 3 Vertices textureCord and normal indexes in the file 
+
+
+### Textures
+PNG Format
+Blender Tut :   
+Select All Faces   
+Create new Image in UV Editing Tab   
+Also in Modeling => ctrl+T to triangulate faces & Upper menu edge=>edge split   
+Right Click Model=> UV Unwrap => Smart?   
+Go To Texture Paint Tab => Select Object in Scene and Change Texture Slot from Material to Single Image   
+Paint ^^   
+Save Image Under the tabs View/Brush/Image => Select Image save as .png ...   
+And export after setting the UV coords   
 
 ## Math
 
