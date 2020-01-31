@@ -9,7 +9,7 @@ public class Camera {
 
     private Vector3f position = new Vector3f(0,0,0);
     private float pitch;
-    private float yaw;
+    private float yaw = 0;
 
 
     public void move(){
