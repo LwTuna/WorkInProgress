@@ -90,6 +90,7 @@ Matrix :
 | 0 | 1/tan(fov/2) | 0 | 0 |   
 | 0 | 0 | -zp/zm | -(2*Zfar*Znear)/zm |   
 | 0 | 0 | -1 | 0 |   
+
 a = Ascpect Ratio   
 fov = Field Of View   
 Zfar = far Plane distance   
@@ -106,3 +107,10 @@ The Offset of the Camera to draw Objects in relation to the camera Position
 ## Light
 Reflectivity -> How Strong the Light Should be reflected from surface of an object, 0-> no reflectivity    
 Shien damping -> How far the Camera can get away from the reflected Light Angle to notice the reflection    
+
+## Fog
+
+Visiblity modifies the color of the object and mixes it with the background color    
+Density determines the "thiccnes" of the fog    
+Gradient determines how quickly the fog makes objects less visible   
+visibility = e<sup>(-distanceFromCamera * density)<sup>gradient</sup></sup>

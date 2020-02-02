@@ -23,6 +23,9 @@ public class MasterRenderer {
     private static final float NEAR_PLANE = 0.1f;
     private static final float FAR_PLANE = 1000f;
 
+    private static float skyRed=0.5f,skyGreen=0.5f,skyBlue=0.8f;
+
+
     private Matrix4f projectionMatrix;
 
     private StaticShader entityShader = new StaticShader();
@@ -54,14 +57,17 @@ public class MasterRenderer {
     }
 
     public void render(Light sun, Camera camera) {
+
         prepare();
         entityShader.start();
+        entityShader.loadSkyColor(skyRed,skyGreen,skyBlue);
         entityShader.loadLight(sun);
         entityShader.loadViewMatrix(camera);
         entityRenderer.render(entities);
         entityShader.stop();
 
         terrainShader.start();
+        terrainShader.loadSkyColor(skyRed,skyGreen,skyBlue);
         terrainShader.loadLight(sun);
         terrainShader.loadViewMatrix(camera);
         terrainRenderer.render(terrains);
@@ -79,7 +85,7 @@ public class MasterRenderer {
 
     public void processEntity(Entity e) {
         TexturedModel entityModel = e.getModel();
-        List<Entity> batch = entities.get(e);
+        List<Entity> batch = entities.get(entityModel);
         if (batch != null)
             batch.add(e);
         else {
@@ -108,7 +114,7 @@ public class MasterRenderer {
         glEnable(GL_DEPTH_TEST);
 
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-        glClearColor(0, 0, 1, 1);
+        glClearColor(skyRed, skyGreen, skyBlue, 1);
     }
 
     public void cleanUp() {

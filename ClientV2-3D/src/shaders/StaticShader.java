@@ -18,7 +18,8 @@ public class StaticShader extends ShaderProgram {
             location_lightColor,
             location_shineDamper,
             location_Reflectivity,
-            location_useFakeLighting;
+            location_useFakeLighting,
+            location_skyColor;
 
     public StaticShader() {
         super(VERTEX_FILE, FRAGMENT_FILE);
@@ -41,6 +42,7 @@ public class StaticShader extends ShaderProgram {
         location_shineDamper = super.getUniformLocation("shineDamper");
         location_Reflectivity = super.getUniformLocation("reflectivity");
         location_useFakeLighting = super.getUniformLocation("useFakeLighting");
+        location_skyColor = super.getUniformLocation("skyColor");
     }
 
     public void loadShineVariables(float damper,float reflectivity){
@@ -66,5 +68,10 @@ public class StaticShader extends ShaderProgram {
 
     public void loadFakeLighting(boolean fl){
         super.loadBoolean(location_useFakeLighting,fl);
+    }
+
+
+    public void loadSkyColor(float r,float g,float b){
+        super.loadVector3f(location_skyColor,new Vector3f(r,g,b));
     }
 }

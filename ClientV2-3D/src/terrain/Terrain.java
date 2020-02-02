@@ -10,7 +10,7 @@ import toolbox.Transform;
 
 public class Terrain {
 
-    private static final float SIZE = 128;
+    private static final float SIZE = 1024;
     private static final int VERTEX_COUNT = (int) (SIZE/8);
 
     private float x;
