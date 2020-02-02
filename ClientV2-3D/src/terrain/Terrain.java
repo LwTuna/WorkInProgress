@@ -10,16 +10,18 @@ import toolbox.Transform;
 
 public class Terrain {
 
-    private static final float SIZE = 1024;
+    private static final float SIZE = 256;
     private static final int VERTEX_COUNT = (int) (SIZE/8);
 
     private float x;
     private float z;
     private RawModel model;
-    private ModelTexture texture;
+    private TerrainTexturePack texture;
+    private TerrainTexture blendMap;
 
-    public Terrain (int gridX, int gridZ, Loader loader, ModelTexture texture){
-        this.texture = texture;
+    public Terrain (int gridX, int gridZ, Loader loader, TerrainTexturePack texturePack,TerrainTexture blendMap){
+        this.texture = texturePack;
+        this.blendMap = blendMap;
         this.x = gridX * SIZE;
         this.z = gridZ * SIZE;
         this.model = generateTerrain(loader);
@@ -76,8 +78,12 @@ public class Terrain {
         return model;
     }
 
-    public ModelTexture getTexture() {
+    public TerrainTexturePack getTexture() {
         return texture;
+    }
+
+    public TerrainTexture getBlendMap() {
+        return blendMap;
     }
 
     public Transform getTransform(){

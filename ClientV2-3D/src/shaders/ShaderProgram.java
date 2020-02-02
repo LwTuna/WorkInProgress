@@ -85,7 +85,7 @@ public abstract class ShaderProgram {
         glUniform1f(location, (value) ? 1 : 0);
     }
 
-    protected void loadFloat(int location, int value) {
+    protected void loadInt(int location, int value) {
         glUniform1i(location, value);
     }
 

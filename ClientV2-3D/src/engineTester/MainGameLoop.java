@@ -10,9 +10,12 @@ import org.lwjgl.opengl.Display;
 import models.RawModel;
 import models.TexturedModel;
 import org.lwjgl.util.vector.Vector3f;
+import org.newdawn.slick.opengl.TextureLoader;
 import renderEngine.*;
 import shaders.StaticShader;
 import terrain.Terrain;
+import terrain.TerrainTexture;
+import terrain.TerrainTexturePack;
 import textures.ModelTexture;
 import toolbox.Transform;
 
@@ -62,8 +65,15 @@ public class MainGameLoop {
         grassBuschel.getModel().getTexture().setHasTransparency(true);
         grassBuschel.getModel().getTexture().setUseFakeLighting(true);
 
-        Terrain terrain = new Terrain(0, -1, loader, new ModelTexture(loader.loadTexture("grass")));
-        Terrain terrain2 = new Terrain(-1, -1, loader, new ModelTexture(loader.loadTexture("grass")));
+        TerrainTexture blendMap = new TerrainTexture(loader.loadTexture("terrain/blendMap"));
+        TerrainTexturePack texturePack = new TerrainTexturePack(
+                new TerrainTexture(loader.loadTexture("terrain/grass")),
+                new TerrainTexture(loader.loadTexture("terrain/floweryGrass")),
+                new TerrainTexture(loader.loadTexture("terrain/dirt")),
+                new TerrainTexture(loader.loadTexture("terrain/path"))
+        );
+        Terrain terrain = new Terrain(0, -1, loader,texturePack,blendMap);
+        Terrain terrain2 = new Terrain(-1, -1, loader,texturePack,blendMap);
         while (!Display.isCloseRequested()) {
             glViewport(0, 0, Display.getWidth(), Display.getHeight());
             camera.move();

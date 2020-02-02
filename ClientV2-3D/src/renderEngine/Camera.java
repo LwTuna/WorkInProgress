@@ -8,7 +8,7 @@ import java.util.Vector;
 public class Camera {
 
     private Vector3f position = new Vector3f(0,0,0);
-    private float pitch;
+    private float pitch = 60;
     private float yaw = 0;
 
 
